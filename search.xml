@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu启动自动挂载硬盘</title>
+    <url>/2022/05/09/Ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</url>
+    <content><![CDATA[<h2 id="启动自动挂载硬盘"><a href="#启动自动挂载硬盘" class="headerlink" title="启动自动挂载硬盘"></a>启动自动挂载硬盘</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看磁盘分区</span></span><br><span class="line">sudo fdisk -l</span><br><span class="line"><span class="comment"># 挂载磁盘</span></span><br><span class="line">sudo mount /dev/sdb /data/</span><br><span class="line"><span class="comment"># 查看磁盘挂载UUID</span></span><br><span class="line">sudo blkid /dev/sdb</span><br><span class="line"><span class="comment"># 修改/etc/fstab文件</span></span><br><span class="line">sudo vi /etc/fstab</span><br><span class="line"><span class="comment"># 添加磁盘信息，[UUID=************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span></span><br><span class="line"><span class="comment"># 第一数字0，0是开机不检查磁盘，1是开机检查磁盘</span></span><br><span class="line"><span class="comment"># 第二个数2，0表示交换分区，1表示启动分区，2表示普通分区 </span></span><br><span class="line">UUID=<span class="variable">$&#123;UUID&#125;</span> /media/qinf/D ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker-container-启动重启"><a href="#Docker-container-启动重启" class="headerlink" title="Docker container 启动重启"></a>Docker container 启动重启</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --restart=always -d --name <span class="variable">$&#123;container_name&#125;</span> -p <span class="variable">$&#123;port&#125;</span>:80 -v /localdir:/mount_dir <span class="variable">$&#123;image_name&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>TIL</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/07/21/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
