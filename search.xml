@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Ubuntu启动自动挂载硬盘</title>
-    <url>/2022/05/09/Ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</url>
-    <content><![CDATA[<h2 id="启动自动挂载硬盘"><a href="#启动自动挂载硬盘" class="headerlink" title="启动自动挂载硬盘"></a>启动自动挂载硬盘</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看磁盘分区</span></span><br><span class="line">sudo fdisk -l</span><br><span class="line"><span class="comment"># 挂载磁盘</span></span><br><span class="line">sudo mount /dev/sdb /data/</span><br><span class="line"><span class="comment"># 查看磁盘挂载UUID</span></span><br><span class="line">sudo blkid /dev/sdb</span><br><span class="line"><span class="comment"># 修改/etc/fstab文件</span></span><br><span class="line">sudo vi /etc/fstab</span><br><span class="line"><span class="comment"># 添加磁盘信息，[UUID=************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span></span><br><span class="line"><span class="comment"># 第一数字0，0是开机不检查磁盘，1是开机检查磁盘</span></span><br><span class="line"><span class="comment"># 第二个数2，0表示交换分区，1表示启动分区，2表示普通分区 </span></span><br><span class="line">UUID=<span class="variable">$&#123;UUID&#125;</span> /media/qinf/D ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<h2 id="Docker-container-启动重启"><a href="#Docker-container-启动重启" class="headerlink" title="Docker container 启动重启"></a>Docker container 启动重启</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --restart=always -d --name <span class="variable">$&#123;container_name&#125;</span> -p <span class="variable">$&#123;port&#125;</span>:80 -v /localdir:/mount_dir <span class="variable">$&#123;image_name&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+    <title>Ping不走代理</title>
+    <url>/2022/05/06/Ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p><code>ping</code>使用的是<code>ICMP</code>协议，不支持代理。<br>可以执行<code>curl -vv https://www.google.com</code>看看有没有走代理。</p>
+]]></content>
       <categories>
         <category>TIL</category>
       </categories>
       <tags>
-        <tag>Ubuntu Docker</tag>
+        <tag>proxy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多版本管理,Maven单测</title>
+    <url>/2022/07/23/Java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-Maven%E5%8D%95%E6%B5%8B/</url>
+    <content><![CDATA[<h2 id="Java-多版本管理"><a href="#Java-多版本管理" class="headerlink" title="Java 多版本管理"></a>Java 多版本管理</h2><p><code>sdkman</code>可安装多版本<code>JAVA</code>或者其他软件。<a href="https://sdkman.io/">sdkman.io</a><br><code>jEVN</code>是一个命令行工具让你免于设置<code>JAVA_HOME</code>配置。可以参考这篇文章<a href="https://developer.bring.com/blog/configuring-jenv-the-right-way/">Configuring jenv the right way</a></p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="comment"># 添加jdk，这里以Mac OSX为例</span></span><br><span class="line">jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home</span><br><span class="line"><span class="comment"># 启用全局JAVA version</span></span><br><span class="line">jenv global <span class="variable">$&#123;JAVA_VERSION&#125;</span></span><br><span class="line"><span class="comment"># 设置SHELL指定的JAVA version</span></span><br><span class="line">jenv shell <span class="variable">$&#123;JAVA_VERSION&#125;</span></span><br><span class="line"><span class="comment"># 如果使用maven则还需要如下的配置</span></span><br><span class="line">jenv enable-plugin maven</span><br><span class="line">jenv enable-plugin <span class="built_in">export</span> <span class="comment"># 如果不开启的话 $JAVA_HOME 可能为空</span></span><br></pre></td></tr></table></figure>
+<h2 id="Java-单测时出现-java-net-MalformedURLException-unknown-protocol-socks5-异常"><a href="#Java-单测时出现-java-net-MalformedURLException-unknown-protocol-socks5-异常" class="headerlink" title="Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常"></a>Java 单测时出现 <code>java.net.MalformedURLException: unknown protocol: socks5</code> 异常</h2><p>在跑<code>Flink</code> <code>Kubernetes</code>模块的单测时遇到此异常，完整异常栈</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">io.fabric8.kubernetes.client.KubernetesClientException: Invalid proxy server configuration</span><br><span class="line"></span><br><span class="line">	at io.fabric8.kubernetes.client.utils.HttpClientUtils.createHttpClient(HttpClientUtils.java:<span class="number">158</span>)</span><br><span class="line">	at io.fabric8.kubernetes.client.utils.HttpClientUtils.createHttpClientForMockServer(HttpClientUtils.java:<span class="number">66</span>)</span><br><span class="line">	at io.fabric8.kubernetes.client.server.mock.KubernetesMockServer.createClient(KubernetesMockServer.java:<span class="number">86</span>)</span><br><span class="line">	at org.apache.flink.kubernetes.MixedKubernetesServer.before(MixedKubernetesServer.java:<span class="number">64</span>)</span><br><span class="line">	at org.junit.rules.ExternalResource$<span class="number">1.</span>evaluate(ExternalResource.java:<span class="number">46</span>)</span><br><span class="line">	at org.junit.rules.ExternalResource$<span class="number">1.</span>evaluate(ExternalResource.java:<span class="number">48</span>)</span><br><span class="line">	at org.apache.flink.util.TestNameProvider$<span class="number">1.</span>evaluate(TestNameProvider.java:<span class="number">45</span>)</span><br><span class="line">	at org.junit.rules.TestWatcher$<span class="number">1.</span>evaluate(TestWatcher.java:<span class="number">55</span>)</span><br><span class="line">	at org.junit.rules.RunRules.evaluate(RunRules.java:<span class="number">20</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:<span class="number">325</span>)</span><br><span class="line">	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:<span class="number">78</span>)</span><br><span class="line">	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:<span class="number">57</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner$<span class="number">3.</span>run(ParentRunner.java:<span class="number">290</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner$<span class="number">1.</span>schedule(ParentRunner.java:<span class="number">71</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:<span class="number">288</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner.access$<span class="number">000</span>(ParentRunner.java:<span class="number">58</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner$<span class="number">2.</span>evaluate(ParentRunner.java:<span class="number">268</span>)</span><br><span class="line">	at org.junit.runners.ParentRunner.run(ParentRunner.java:<span class="number">363</span>)</span><br><span class="line">	at org.junit.runner.JUnitCore.run(JUnitCore.java:<span class="number">137</span>)</span><br><span class="line">	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:<span class="number">69</span>)</span><br><span class="line">	at com.intellij.rt.junit.IdeaTestRunner$Repeater$<span class="number">1.</span>execute(IdeaTestRunner.java:<span class="number">38</span>)</span><br><span class="line">	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:<span class="number">11</span>)</span><br><span class="line">	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:<span class="number">35</span>)</span><br><span class="line">	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:<span class="number">235</span>)</span><br><span class="line">	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:<span class="number">54</span>)</span><br><span class="line">Caused by: java.net.MalformedURLException: unknown protocol: socks5</span><br><span class="line">	at java.net.URL.&lt;init&gt;(URL.java:<span class="number">617</span>)</span><br><span class="line">	at java.net.URL.&lt;init&gt;(URL.java:<span class="number">507</span>)</span><br><span class="line">	at java.net.URL.&lt;init&gt;(URL.java:<span class="number">456</span>)</span><br><span class="line">	at io.fabric8.kubernetes.client.utils.HttpClientUtils.getProxyUrl(HttpClientUtils.java:<span class="number">221</span>)</span><br><span class="line">	at io.fabric8.kubernetes.client.utils.HttpClientUtils.createHttpClient(HttpClientUtils.java:<span class="number">144</span>)</span><br><span class="line">	... <span class="number">24</span> more</span><br></pre></td></tr></table></figure>
+<p>此异常是由于设置的代理导致的，可以参考<a href="https://stackoverflow.com/questions/17737564/security-exception-malformedurlexception-unknown-protocol-socket-during-openi">Security Exception: MalformedURLException: unknown protocol: socket during opening JNLP file</a>修改网络设置。但是只修改这里对于我的环境是没有生效的，因为在公司需要配置代理，设置了<code>HTTPS_PROXY=socket5://127.0.0.1:port</code>所以提示<code>unknown protocol: socks5</code>，需要在终端中执行<code>unset HTTPS_PROXY</code>，然后执行单测就可以了。</p>
+<h2 id="Maven-单测使用"><a href="#Maven-单测使用" class="headerlink" title="Maven 单测使用"></a>Maven 单测使用</h2><p>由于很少使用<code>maven</code>命令做测试，这次处理上面一个问题时候用到了，这里简单整理一下<code>maven test</code>相关的使用命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 执行单个类的测试</span></span><br><span class="line">maven <span class="built_in">test</span> -Dtest=com.my.pkg.FarTest</span><br><span class="line"><span class="comment"># 执行单个类的指定方法测试</span></span><br><span class="line">maven <span class="built_in">test</span> -Dtest=com.my.pkg.FarTest<span class="comment">#testFunc</span></span><br><span class="line"><span class="comment"># 跳过测试</span></span><br><span class="line">maven clean package -DskipTests</span><br><span class="line"><span class="comment"># 跳过测试及测试编译</span></span><br><span class="line">mvn package -Dmaven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>TIL</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -20,7 +39,9 @@
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
@@ -30,5 +51,20 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Ubuntu启动自动挂载硬盘</title>
+    <url>/2022/05/09/Ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</url>
+    <content><![CDATA[<h2 id="启动自动挂载硬盘"><a href="#启动自动挂载硬盘" class="headerlink" title="启动自动挂载硬盘"></a>启动自动挂载硬盘</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看磁盘分区</span></span><br><span class="line">sudo fdisk -l</span><br><span class="line"><span class="comment"># 挂载磁盘</span></span><br><span class="line">sudo mount /dev/sdb /data/</span><br><span class="line"><span class="comment"># 查看磁盘挂载UUID</span></span><br><span class="line">sudo blkid /dev/sdb</span><br><span class="line"><span class="comment"># 修改/etc/fstab文件</span></span><br><span class="line">sudo vi /etc/fstab</span><br><span class="line"><span class="comment"># 添加磁盘信息，[UUID=************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span></span><br><span class="line"><span class="comment"># 第一数字0，0是开机不检查磁盘，1是开机检查磁盘</span></span><br><span class="line"><span class="comment"># 第二个数2，0表示交换分区，1表示启动分区，2表示普通分区 </span></span><br><span class="line">UUID=<span class="variable">$&#123;UUID&#125;</span> /media/qinf/D ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h2 id="Docker-container-启动重启"><a href="#Docker-container-启动重启" class="headerlink" title="Docker container 启动重启"></a>Docker container 启动重启</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --restart=always -d --name <span class="variable">$&#123;container_name&#125;</span> -p <span class="variable">$&#123;port&#125;</span>:80 -v /localdir:/mount_dir <span class="variable">$&#123;image_name&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>TIL</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>Docker</tag>
+      </tags>
   </entry>
 </search>
