@@ -26,5 +26,5 @@ docker run --restart=always -d --name ${container_name} -p ${port}:80 -v /locald
 ---
 
 > Author:   
-> URL: http://localhost:1313/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/  
+> URL: https://qinf.github.io/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/  
 

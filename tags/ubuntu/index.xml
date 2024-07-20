@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Ubuntu - Tag - Eason的blog</title>
-    <link>http://localhost:1313/tags/ubuntu/</link>
+    <link>https://qinf.github.io/tags/ubuntu/</link>
     <description>Ubuntu - Tag | Eason的blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 09 May 2022 17:47:42 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ubuntu/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 09 May 2022 17:47:42 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/tags/ubuntu/" rel="self" type="application/rss+xml" /><item>
   <title>Ubuntu启动自动挂载硬盘</title>
-  <link>http://localhost:1313/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</link>
+  <link>https://qinf.github.io/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</link>
   <pubDate>Mon, 09 May 2022 17:47:42 &#43;0000</pubDate>
   <author>Author</author>
-  <guid>http://localhost:1313/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</guid>
+  <guid>https://qinf.github.io/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</guid>
   <description><![CDATA[启动自动挂载硬盘 1 2 3 4 5 6 7 8 9 10 11 12 # 查看磁盘分区 sudo fdisk -l # 挂载磁盘 sudo mount /dev/sdb /data/ # 查看磁盘挂载UUID sudo blkid /dev/sdb # 修改/etc/fstab文件 sudo vi /etc/fstab # 添加磁盘信息，[UUID=************] [挂载磁盘分区] [挂载磁盘格式] 0 2 # 第一数字0，0是开机不检查磁盘，1是开机检查磁盘 # 第二个数2，0表示交换分区，1表示启动分区，2表示普通分区 UUID=${UUID} /media/qinf/D ntfs defaults 0 2 Docker container 启动重启 1 docker run --restart=always -d --name ${container_name} -p ${port}:80 -v /localdir:/mount_dir ${image_name} ]]></description>
 </item>
 </channel>

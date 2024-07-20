@@ -6,5 +6,5 @@
 ---
 
 > Author:   
-> URL: http://localhost:1313/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/  
+> URL: https://qinf.github.io/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/  
 
