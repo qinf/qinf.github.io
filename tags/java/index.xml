@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Java - Tag - Eason的blog</title>
+    <link>http://localhost:1313/tags/java/</link>
+    <description>Java - Tag | Eason的blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/java/" rel="self" type="application/rss+xml" /><item>
+  <title>Java多版本管理,Maven单测</title>
+  <link>http://localhost:1313/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</link>
+  <pubDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</pubDate>
+  <author>Author</author>
+  <guid>http://localhost:1313/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</guid>
+  <description><![CDATA[Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
+jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
+1 2 3 4 5 6 7 8 9 10 11 12 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面 echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc # 添加jdk，这里以Mac OSX为例 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home # 启用全局JAVA version jenv global ${JAVA_VERSION} # 设置SHELL指定的JAVA version jenv shell ${JAVA_VERSION} # 如果使用maven则还需要如下的配置 jenv enable-plugin maven jenv enable-plugin export # 如果不开启的话 $JAVA_HOME 可能为空 Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常 在跑Flink Kubernetes模块的单测时遇到此异常，完整异常栈]]></description>
+</item>
+</channel>
+</rss>

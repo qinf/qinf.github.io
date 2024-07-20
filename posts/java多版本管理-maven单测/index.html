@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Java多版本管理,Maven单测 - Eason的blog</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
+jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
+1 2 3 4 5 6 7 8 9 10 11 12 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面 echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc # 添加jdk，这里以Mac OSX为例 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home # 启用全局JAVA version jenv global ${JAVA_VERSION} # 设置SHELL指定的JAVA version jenv shell ${JAVA_VERSION} # 如果使用maven则还需要如下的配置 jenv enable-plugin maven jenv enable-plugin export # 如果不开启的话 $JAVA_HOME 可能为空 Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常 在跑Flink Kubernetes模块的单测时遇到此异常，完整异常栈" /><meta name="keywords" content='Java, Maven' />
+  <meta itemprop="name" content="Java多版本管理,Maven单测">
+  <meta itemprop="description" content="Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
+jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
+1 2 3 4 5 6 7 8 9 10 11 12 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面 echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc # 添加jdk，这里以Mac OSX为例 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home # 启用全局JAVA version jenv global ${JAVA_VERSION} # 设置SHELL指定的JAVA version jenv shell ${JAVA_VERSION} # 如果使用maven则还需要如下的配置 jenv enable-plugin maven jenv enable-plugin export # 如果不开启的话 $JAVA_HOME 可能为空 Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常 在跑Flink Kubernetes模块的单测时遇到此异常，完整异常栈">
+  <meta itemprop="datePublished" content="2022-07-23T18:34:33+00:00">
+  <meta itemprop="dateModified" content="2022-07-23T18:34:33+00:00">
+  <meta itemprop="wordCount" content="228">
+  <meta itemprop="keywords" content="Java,Maven"><meta property="og:url" content="http://localhost:1313/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/">
+  <meta property="og:site_name" content="Eason的blog">
+  <meta property="og:title" content="Java多版本管理,Maven单测">
+  <meta property="og:description" content="Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
+jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
+1 2 3 4 5 6 7 8 9 10 11 12 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面 echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc # 添加jdk，这里以Mac OSX为例 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home # 启用全局JAVA version jenv global ${JAVA_VERSION} # 设置SHELL指定的JAVA version jenv shell ${JAVA_VERSION} # 如果使用maven则还需要如下的配置 jenv enable-plugin maven jenv enable-plugin export # 如果不开启的话 $JAVA_HOME 可能为空 Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常 在跑Flink Kubernetes模块的单测时遇到此异常，完整异常栈">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-07-23T18:34:33+00:00">
+    <meta property="article:modified_time" content="2022-07-23T18:34:33+00:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Maven">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java多版本管理,Maven单测">
+  <meta name="twitter:description" content="Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
+jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
+1 2 3 4 5 6 7 8 9 10 11 12 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面 echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc # 添加jdk，这里以Mac OSX为例 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home # 启用全局JAVA version jenv global ${JAVA_VERSION} # 设置SHELL指定的JAVA version jenv shell ${JAVA_VERSION} # 如果使用maven则还需要如下的配置 jenv enable-plugin maven jenv enable-plugin export # 如果不开启的话 $JAVA_HOME 可能为空 Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常 在跑Flink Kubernetes模块的单测时遇到此异常，完整异常栈">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/" /><link rel="prev" href="http://localhost:1313/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" /><link rel="next" href="http://localhost:1313/posts/a12006b/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Java多版本管理,Maven单测",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B\/"
+    },"genre": "posts","keywords": "Java, Maven","wordcount":  228 ,
+    "url": "http:\/\/localhost:1313\/posts\/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B\/","datePublished": "2022-07-23T18:34:33+00:00","dateModified": "2022-07-23T18:34:33+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Author"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Eason的blog"><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/archives/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-exclamation-circle fa-fw fa-sm" aria-hidden="true"></i> About</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Eason的blog"><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/archives/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-exclamation-circle fa-fw fa-sm" aria-hidden="true"></i> About</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Java多版本管理,Maven单测</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/til/" class="post-category" title="Category - TIL"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> TIL</a></span></div><div class="post-meta-line"><span title="published on 2022-07-23 18:34:33"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2022-07-23">2022-07-23</time></span>&nbsp;<span title="228 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 300 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#java-多版本管理">Java 多版本管理</a></li>
+    <li><a href="#java-单测时出现-javanetmalformedurlexception-unknown-protocol-socks5-异常">Java 单测时出现 <code>java.net.MalformedURLException: unknown protocol: socks5</code> 异常</a></li>
+    <li><a href="#maven-单测使用">Maven 单测使用</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="java-多版本管理" class="heading-element"><span>Java 多版本管理</span>
+  <a href="#java-%e5%a4%9a%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><code>sdkman</code>可安装多版本<code>JAVA</code>或者其他软件。<a href="https://sdkman.io/"target="_blank" rel="external nofollow noopener noreferrer">sdkman.io</a><br>
+<code>jEVN</code>是一个命令行工具让你免于设置<code>JAVA_HOME</code>配置。可以参考这篇文章<a href="https://developer.bring.com/blog/configuring-jenv-the-right-way/"target="_blank" rel="external nofollow noopener noreferrer">Configuring jenv the right way</a></p>
+<!-- more -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;eval &#34;$(jenv init -)&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加jdk，这里以Mac OSX为例</span>
+</span></span><span class="line"><span class="cl">jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+</span></span><span class="line"><span class="cl"><span class="c1"># 启用全局JAVA version</span>
+</span></span><span class="line"><span class="cl">jenv global <span class="si">${</span><span class="nv">JAVA_VERSION</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置SHELL指定的JAVA version</span>
+</span></span><span class="line"><span class="cl">jenv shell <span class="si">${</span><span class="nv">JAVA_VERSION</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果使用maven则还需要如下的配置</span>
+</span></span><span class="line"><span class="cl">jenv enable-plugin maven
+</span></span><span class="line"><span class="cl">jenv enable-plugin <span class="nb">export</span> <span class="c1"># 如果不开启的话 $JAVA_HOME 可能为空</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="java-单测时出现-javanetmalformedurlexception-unknown-protocol-socks5-异常" class="heading-element"><span>Java 单测时出现 <code>java.net.MalformedURLException: unknown protocol: socks5</code> 异常</span>
+  <a href="#java-%e5%8d%95%e6%b5%8b%e6%97%b6%e5%87%ba%e7%8e%b0-javanetmalformedurlexception-unknown-protocol-socks5-%e5%bc%82%e5%b8%b8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>在跑<code>Flink</code> <code>Kubernetes</code>模块的单测时遇到此异常，完整异常栈</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">io</span><span class="p">.</span><span class="na">fabric8</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">KubernetesClientException</span><span class="p">:</span><span class="w"> </span><span class="n">Invalid</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="n">configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="na">fabric8</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">utils</span><span class="p">.</span><span class="na">HttpClientUtils</span><span class="p">.</span><span class="na">createHttpClient</span><span class="p">(</span><span class="n">HttpClientUtils</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">158</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="na">fabric8</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">utils</span><span class="p">.</span><span class="na">HttpClientUtils</span><span class="p">.</span><span class="na">createHttpClientForMockServer</span><span class="p">(</span><span class="n">HttpClientUtils</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">66</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="na">fabric8</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">server</span><span class="p">.</span><span class="na">mock</span><span class="p">.</span><span class="na">KubernetesMockServer</span><span class="p">.</span><span class="na">createClient</span><span class="p">(</span><span class="n">KubernetesMockServer</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">86</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">flink</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">MixedKubernetesServer</span><span class="p">.</span><span class="na">before</span><span class="p">(</span><span class="n">MixedKubernetesServer</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">64</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">rules</span><span class="p">.</span><span class="na">ExternalResource$1</span><span class="p">.</span><span class="na">evaluate</span><span class="p">(</span><span class="n">ExternalResource</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">46</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">rules</span><span class="p">.</span><span class="na">ExternalResource$1</span><span class="p">.</span><span class="na">evaluate</span><span class="p">(</span><span class="n">ExternalResource</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">48</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">flink</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">TestNameProvider$1</span><span class="p">.</span><span class="na">evaluate</span><span class="p">(</span><span class="n">TestNameProvider</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">45</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">rules</span><span class="p">.</span><span class="na">TestWatcher$1</span><span class="p">.</span><span class="na">evaluate</span><span class="p">(</span><span class="n">TestWatcher</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">55</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">rules</span><span class="p">.</span><span class="na">RunRules</span><span class="p">.</span><span class="na">evaluate</span><span class="p">(</span><span class="n">RunRules</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">20</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner</span><span class="p">.</span><span class="na">runLeaf</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">325</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">BlockJUnit4ClassRunner</span><span class="p">.</span><span class="na">runChild</span><span class="p">(</span><span class="n">BlockJUnit4ClassRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">78</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">BlockJUnit4ClassRunner</span><span class="p">.</span><span class="na">runChild</span><span class="p">(</span><span class="n">BlockJUnit4ClassRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">57</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner$3</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">290</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner$1</span><span class="p">.</span><span class="na">schedule</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">71</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner</span><span class="p">.</span><span class="na">runChildren</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">288</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner</span><span class="p">.</span><span class="na">access$000</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">58</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner$2</span><span class="p">.</span><span class="na">evaluate</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">268</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runners</span><span class="p">.</span><span class="na">ParentRunner</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">ParentRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">363</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runner</span><span class="p">.</span><span class="na">JUnitCore</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">JUnitCore</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">137</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">intellij</span><span class="p">.</span><span class="na">junit4</span><span class="p">.</span><span class="na">JUnit4IdeaTestRunner</span><span class="p">.</span><span class="na">startRunnerWithArgs</span><span class="p">(</span><span class="n">JUnit4IdeaTestRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">69</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">intellij</span><span class="p">.</span><span class="na">rt</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">IdeaTestRunner$Repeater$1</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">IdeaTestRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">38</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">intellij</span><span class="p">.</span><span class="na">rt</span><span class="p">.</span><span class="na">execution</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">TestsRepeater</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="n">TestsRepeater</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">11</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">intellij</span><span class="p">.</span><span class="na">rt</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">IdeaTestRunner$Repeater</span><span class="p">.</span><span class="na">startRunnerWithArgs</span><span class="p">(</span><span class="n">IdeaTestRunner</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">35</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">intellij</span><span class="p">.</span><span class="na">rt</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">JUnitStarter</span><span class="p">.</span><span class="na">prepareStreamsAndStart</span><span class="p">(</span><span class="n">JUnitStarter</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">235</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">intellij</span><span class="p">.</span><span class="na">rt</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">JUnitStarter</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="n">JUnitStarter</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">54</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Caused</span><span class="w"> </span><span class="n">by</span><span class="p">:</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">net</span><span class="p">.</span><span class="na">MalformedURLException</span><span class="p">:</span><span class="w"> </span><span class="n">unknown</span><span class="w"> </span><span class="n">protocol</span><span class="p">:</span><span class="w"> </span><span class="n">socks5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">net</span><span class="p">.</span><span class="na">URL</span><span class="p">.</span><span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">URL</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">617</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">net</span><span class="p">.</span><span class="na">URL</span><span class="p">.</span><span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">URL</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">507</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">net</span><span class="p">.</span><span class="na">URL</span><span class="p">.</span><span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">URL</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">456</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="na">fabric8</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">utils</span><span class="p">.</span><span class="na">HttpClientUtils</span><span class="p">.</span><span class="na">getProxyUrl</span><span class="p">(</span><span class="n">HttpClientUtils</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">221</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">at</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="na">fabric8</span><span class="p">.</span><span class="na">kubernetes</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">utils</span><span class="p">.</span><span class="na">HttpClientUtils</span><span class="p">.</span><span class="na">createHttpClient</span><span class="p">(</span><span class="n">HttpClientUtils</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="n">144</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">...</span><span class="w"> </span><span class="n">24</span><span class="w"> </span><span class="n">more</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>此异常是由于设置的代理导致的，可以参考<a href="https://stackoverflow.com/questions/17737564/security-exception-malformedurlexception-unknown-protocol-socket-during-openi"target="_blank" rel="external nofollow noopener noreferrer">Security Exception: MalformedURLException: unknown protocol: socket during opening JNLP file</a>修改网络设置。但是只修改这里对于我的环境是没有生效的，因为在公司需要配置代理，设置了<code>HTTPS_PROXY=socket5://127.0.0.1:port</code>所以提示<code>unknown protocol: socks5</code>，需要在终端中执行<code>unset HTTPS_PROXY</code>，然后执行单测就可以了。</p>
+<h2 id="maven-单测使用" class="heading-element"><span>Maven 单测使用</span>
+  <a href="#maven-%e5%8d%95%e6%b5%8b%e4%bd%bf%e7%94%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>由于很少使用<code>maven</code>命令做测试，这次处理上面一个问题时候用到了，这里简单整理一下<code>maven test</code>相关的使用命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 执行单个类的测试</span>
+</span></span><span class="line"><span class="cl">maven <span class="nb">test</span> -Dtest<span class="o">=</span>com.my.pkg.FarTest
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行单个类的指定方法测试</span>
+</span></span><span class="line"><span class="cl">maven <span class="nb">test</span> -Dtest<span class="o">=</span>com.my.pkg.FarTest#testFunc
+</span></span><span class="line"><span class="cl"><span class="c1"># 跳过测试</span>
+</span></span><span class="line"><span class="cl">maven clean package -DskipTests
+</span></span><span class="line"><span class="cl"><span class="c1"># 跳过测试及测试编译</span>
+</span></span><span class="line"><span class="cl">mvn package -Dmaven.test.skip<span class="o">=</span>true</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2022-07-23 18:34:33">Updated on 2022-07-23&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/" data-title="Java多版本管理,Maven单测" data-hashtags="Java,Maven"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/java/" class="post-tag" title="Tags - Java">Java</a><a href="/tags/maven/" class="post-tag" title="Tags - Maven">Maven</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" class="post-nav-item" rel="prev" title="Ubuntu启动自动挂载硬盘"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Ubuntu启动自动挂载硬盘</a>
+      <a href="/posts/a12006b/" class="post-nav-item" rel="next" title="Mock Test">Mock Test<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div class="post-reward">
+    <div class="comment">Buy me a coffee</div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>Donate</label>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="Alipay" data-title="Alipay" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span>Alipay</span>
+          </div></div>
+  </div></article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.130.0-DEV"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">यह वेबसाइट जावास्क्रिप्ट सक्षम होने पर सबसे अच्छा काम करती है।</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
