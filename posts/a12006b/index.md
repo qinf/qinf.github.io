@@ -3,7 +3,7 @@
 
 这周看到来一篇文章[Mocking is an Anti-Pattern](https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/)，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。
 &lt;!--more--&gt;
-![Mock是一种反模式](img/mock-is-an-anti-pattern/mock.png)
+![Mock是一种反模式](images/mock-is-an-anti-pattern/mock.png)
 ## 什么是Mock，什么是反模式
 &gt; 在面向对象程序设计中，[**模拟对象**](https://zh.wikipedia.org/wiki/%E6%A8%A1%E6%8B%9F%E5%AF%B9%E8%B1%A1)（英语：mock object，也译作模仿对象）是以可控的方式模拟真实对象行为的假的对象。程序员通常创造模拟对象来测试其他对象的行为，很类似汽车设计者使用碰撞测试假人来模拟车辆碰撞中人的动态行为。
 
