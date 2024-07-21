@@ -75,6 +75,6 @@ mvn package -Dmaven.test.skip=true
 
 ---
 
-> Author:   
+> Author: [eason.qin](https://github.com/qinf)  
 > URL: https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/  
 

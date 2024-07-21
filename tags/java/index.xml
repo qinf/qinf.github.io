@@ -3,11 +3,12 @@
     <title>Java - Tag - Eason的blog</title>
     <link>https://qinf.github.io/tags/java/</link>
     <description>Java - Tag | Eason的blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
+      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/tags/java/" rel="self" type="application/rss+xml" /><item>
   <title>Java多版本管理,Maven单测</title>
   <link>https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</link>
   <pubDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</pubDate>
-  <author>Author</author>
+  <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</guid>
   <description><![CDATA[Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
 jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way

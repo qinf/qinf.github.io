@@ -3,11 +3,12 @@
     <title>Proxy - Tag - Eason的blog</title>
     <link>https://qinf.github.io/tags/proxy/</link>
     <description>Proxy - Tag | Eason的blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 06 May 2022 18:31:53 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/tags/proxy/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
+      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Fri, 06 May 2022 18:31:53 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/tags/proxy/" rel="self" type="application/rss+xml" /><item>
   <title>Ping不走代理</title>
   <link>https://qinf.github.io/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/</link>
   <pubDate>Fri, 06 May 2022 18:31:53 &#43;0000</pubDate>
-  <author>Author</author>
+  <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/</guid>
   <description><![CDATA[ping使用的是ICMP协议，不支持代理。 可以执行curl -vv https://www.google.com看看有没有走代理。]]></description>
 </item>

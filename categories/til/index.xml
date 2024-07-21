@@ -3,11 +3,12 @@
     <title>TIL - Category - Eason的blog</title>
     <link>https://qinf.github.io/categories/til/</link>
     <description>TIL - Category | Eason的blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/categories/til/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
+      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</lastBuildDate><atom:link href="https://qinf.github.io/categories/til/" rel="self" type="application/rss+xml" /><item>
   <title>Java多版本管理,Maven单测</title>
   <link>https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</link>
   <pubDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</pubDate>
-  <author>Author</author>
+  <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</guid>
   <description><![CDATA[Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
 jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
@@ -17,7 +18,7 @@ jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这�
   <title>Ubuntu启动自动挂载硬盘</title>
   <link>https://qinf.github.io/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</link>
   <pubDate>Mon, 09 May 2022 17:47:42 &#43;0000</pubDate>
-  <author>Author</author>
+  <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/ubuntu%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</guid>
   <description><![CDATA[启动自动挂载硬盘 1 2 3 4 5 6 7 8 9 10 11 12 # 查看磁盘分区 sudo fdisk -l # 挂载磁盘 sudo mount /dev/sdb /data/ # 查看磁盘挂载UUID sudo blkid /dev/sdb # 修改/etc/fstab文件 sudo vi /etc/fstab # 添加磁盘信息，[UUID=************] [挂载磁盘分区] [挂载磁盘格式] 0 2 # 第一数字0，0是开机不检查磁盘，1是开机检查磁盘 # 第二个数2，0表示交换分区，1表示启动分区，2表示普通分区 UUID=${UUID} /media/qinf/D ntfs defaults 0 2 Docker container 启动重启 1 docker run --restart=always -d --name ${container_name} -p ${port}:80 -v /localdir:/mount_dir ${image_name} ]]></description>
 </item>
@@ -25,7 +26,7 @@ jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这�
   <title>Ping不走代理</title>
   <link>https://qinf.github.io/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/</link>
   <pubDate>Fri, 06 May 2022 18:31:53 &#43;0000</pubDate>
-  <author>Author</author>
+  <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/</guid>
   <description><![CDATA[ping使用的是ICMP协议，不支持代理。 可以执行curl -vv https://www.google.com看看有没有走代理。]]></description>
 </item>
