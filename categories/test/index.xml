@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Test - Category - Eason的blog</title>
+    <link>http://localhost:1313/categories/test/</link>
+    <description>Test - Category | Eason的blog</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
+      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Sat, 20 Jul 2024 19:42:56 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/test/" rel="self" type="application/rss+xml" /><item>
+  <title>Mocking 是一种反模式</title>
+  <link>http://localhost:1313/posts/a12006b/</link>
+  <pubDate>Sat, 20 Jul 2024 19:42:56 &#43;0800</pubDate>
+  <author>eason.qin</author>
+  <guid>http://localhost:1313/posts/a12006b/</guid>
+  <description><![CDATA[<p>这周看到来一篇文章<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。</p>]]></description>
+</item>
+</channel>
+</rss>
