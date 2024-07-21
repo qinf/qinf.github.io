@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>Mock Test - Eason的blog</title><meta name="author" content="eason.qin">
+    <title>Mocking 是一种反模式 - Eason的blog</title><meta name="author" content="eason.qin">
 <meta name="author-link" content="https://github.com/qinf">
-<meta name="description" content="测试。" /><meta name="keywords" content='draft' />
-  <meta itemprop="name" content="Mock Test">
-  <meta itemprop="description" content="测试。">
+<meta name="description" content="这周看到来一篇文章Mocking is an Anti-Pattern，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。" /><meta name="keywords" content='Test, Mock' />
+  <meta itemprop="name" content="Mocking 是一种反模式">
+  <meta itemprop="description" content="这周看到来一篇文章Mocking is an Anti-Pattern，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。">
   <meta itemprop="datePublished" content="2024-07-20T19:42:56+08:00">
-  <meta itemprop="dateModified" content="2024-07-20T21:26:32+08:00">
-  <meta itemprop="wordCount" content="1">
-  <meta itemprop="keywords" content="Draft"><meta property="og:url" content="http://localhost:1313/posts/a12006b/">
+  <meta itemprop="dateModified" content="2024-07-20T19:42:56+08:00">
+  <meta itemprop="wordCount" content="136">
+  <meta itemprop="keywords" content="Test,Mock"><meta property="og:url" content="https://qinf.github.io/posts/a12006b/">
   <meta property="og:site_name" content="Eason的blog">
-  <meta property="og:title" content="Mock Test">
-  <meta property="og:description" content="测试。">
+  <meta property="og:title" content="Mocking 是一种反模式">
+  <meta property="og:description" content="这周看到来一篇文章Mocking is an Anti-Pattern，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-07-20T19:42:56+08:00">
-    <meta property="article:modified_time" content="2024-07-20T21:26:32+08:00">
-    <meta property="article:tag" content="Draft">
+    <meta property="article:modified_time" content="2024-07-20T19:42:56+08:00">
+    <meta property="article:tag" content="Test">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Mock Test">
-  <meta name="twitter:description" content="测试。">
+  <meta name="twitter:title" content="Mocking 是一种反模式">
+  <meta name="twitter:description" content="这周看到来一篇文章Mocking is an Anti-Pattern，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。">
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://localhost:1313/posts/a12006b/" /><link rel="prev" href="http://localhost:1313/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/" /><link rel="next" href="http://localhost:1313/about/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://qinf.github.io/posts/a12006b/" /><link rel="prev" href="https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Mock Test",
+    "headline": "Mocking 是一种反模式",
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/a12006b\/"
-    },"genre": "posts","keywords": "draft","wordcount":  1 ,
-    "url": "http:\/\/localhost:1313\/posts\/a12006b\/","datePublished": "2024-07-20T19:42:56+08:00","dateModified": "2024-07-20T21:26:32+08:00","publisher": {
+      "@id": "https:\/\/qinf.github.io\/posts\/a12006b\/"
+    },"genre": "posts","keywords": "Test","wordcount":  136 ,
+    "url": "https:\/\/qinf.github.io\/posts\/a12006b\/","datePublished": "2024-07-20T19:42:56+08:00","dateModified": "2024-07-20T19:42:56+08:00","publisher": {
       "@type": "Organization",
-      "name": ""},"description": ""
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "eason.qin"
+      },"description": ""
   }
   </script></head>
   <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="Eason的blog"><img loading="lazy" src="/images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Eason的blog"><img loading="lazy" src="images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -96,7 +99,7 @@
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="Eason的blog"><img loading="lazy" src="/images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Eason的blog"><img loading="lazy" src="images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -159,15 +162,143 @@
   </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Mock Test</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Mocking 是一种反模式</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      Anonymous</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/draft/" class="post-category" title="Category - Draft"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Draft</a></span></div><div class="post-meta-line"><span title="published on 2024-07-20 19:42:56"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-20">2024-07-20</time></span>&nbsp;<span title="Updated on 2024-07-20 21:26:32"><i class="fa-regular fa-calendar-check fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-20">2024-07-20</time></span>&nbsp;<span title="One word"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
-    </div><div class="content" id="content"><p>测试。</p></div><div class="post-footer" id="post-footer">
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/qinf" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    eason.qin</a></span></div><div class="post-meta-line"><span title="published on 2024-07-20 19:42:56"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-20">2024-07-20</time></span>&nbsp;<span title="136 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是mock什么是反模式">什么是Mock，什么是反模式</a></li>
+    <li><a href="#mock带来哪些坏处">Mock带来哪些坏处</a></li>
+    <li><a href="#除了mock我们可以怎么做">除了Mock我们可以怎么做</a>
+      <ul>
+        <li><a href="#做更多的单元测试">做更多的单元测试</a></li>
+        <li><a href="#更易于测试的io">更易于测试的IO</a></li>
+        <li><a href="#做io测试">做IO测试</a></li>
+        <li><a href="#逻辑和服务io分离">逻辑和服务/IO分离</a></li>
+        <li><a href="#e2e集成测试">E2E集成测试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>这周看到来一篇文章<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。</p>
+<p><img loading="lazy" src="/img/mock-is-an-anti-pattern/mock.png" alt="Mock是一种反模式" srcset="/img/mock-is-an-anti-pattern/mock.png?size=small, /img/mock-is-an-anti-pattern/mock.png?size=medium 1.5x, /img/mock-is-an-anti-pattern/mock.png?size=large 2x" data-title="Mock是一种反模式" style="--width: 1036px;--aspect-ratio: 1036 / 910;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
+<h2 id="什么是mock什么是反模式" class="heading-element"><span>什么是Mock，什么是反模式</span>
+  <a href="#%e4%bb%80%e4%b9%88%e6%98%afmock%e4%bb%80%e4%b9%88%e6%98%af%e5%8f%8d%e6%a8%a1%e5%bc%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>在面向对象程序设计中，<a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E6%8B%9F%E5%AF%B9%E8%B1%A1"target="_blank" rel="external nofollow noopener noreferrer"><strong>模拟对象</strong></a>（英语：mock object，也译作模仿对象）是以可控的方式模拟真实对象行为的假的对象。程序员通常创造模拟对象来测试其他对象的行为，很类似汽车设计者使用碰撞测试假人来模拟车辆碰撞中人的动态行为。</p>
+</blockquote>
+<blockquote>
+<p>在软件工程中，<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E9%9D%A2%E6%A8%A1%E5%BC%8F"target="_blank" rel="external nofollow noopener noreferrer">反面模式</a>（anti-pattern或antipattern）指的是在实践中经常出现但又低效或是有待优化的设计模式[1][2]，是用来解决问题的带有共同性的不良方法。它们已经经过研究并分类，以防止日后重蹈覆辙，并能在研发尚未投产的系统时辨认出来。</p>
+</blockquote>
+<p>在代码测试中，有些有副作用的逻辑无法直接调用的时候<code>Mock</code>就上场了。<code>Mock</code>模拟了代码里面的参数传递、函数调用以及我们预期结果的验证。一切好像极其的合理，代码的执行也跟我们假想的一模一样。</p>
+<h2 id="mock带来哪些坏处" class="heading-element"><span>Mock带来哪些坏处</span>
+  <a href="#mock%e5%b8%a6%e6%9d%a5%e5%93%aa%e4%ba%9b%e5%9d%8f%e5%a4%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>但是就如<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>这篇文章所说的“Mocking frameworks are a path to insanity!”，在实践中我们总是代码的<code>happy path</code>进行建模，虽然这是必须的但是无助于我们发现代码中的错误。 <br>
+过多的<code>Mock</code>导致了很多浪费体力、时间的无效工作。这让我想起了多年前我还在字节工作的时候的一次实践：为了提高代码测试覆盖率编写了大量的<code>Mock</code>，因为很多涉及到<code>IO</code>代码无法直接调用。<br>
+<code>Mock</code> <code>IO</code>操作的可能会让忽略很多case，包括：边缘情况、故障等等。</p>
+<h2 id="除了mock我们可以怎么做" class="heading-element"><span>除了Mock我们可以怎么做</span>
+  <a href="#%e9%99%a4%e4%ba%86mock%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e6%80%8e%e4%b9%88%e5%81%9a" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>那么除了<code>Mock</code>外还有哪些手段可以改进这种情况呢？文中提到了好几种方式。</p>
+<h3 id="做更多的单元测试" class="heading-element"><span>做更多的单元测试</span>
+  <a href="#%e5%81%9a%e6%9b%b4%e5%a4%9a%e7%9a%84%e5%8d%95%e5%85%83%e6%b5%8b%e8%af%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>使用<a href="https://www.refactoring.com/catalog/decomposeConditional.html"target="_blank" rel="external nofollow noopener noreferrer">Decompose Conditional</a>和<a href="https://refactoring.com/catalog/introduceParameterObject.html"target="_blank" rel="external nofollow noopener noreferrer">Introduce parameter Object</a>等手段进行重构来方便做单元测试。
+这两个都是《重构》这本书中提到的手段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// Decompose Conditional</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// before refactor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">aDate</span><span class="p">.</span><span class="na">isBefore</span><span class="p">(</span><span class="n">plan</span><span class="p">.</span><span class="na">summerStart</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">aDate</span><span class="p">.</span><span class="na">isAfter</span><span class="p">(</span><span class="n">plan</span><span class="p">.</span><span class="na">summerEnd</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">charge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">plan</span><span class="p">.</span><span class="na">summerRate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">else</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">charge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">plan</span><span class="p">.</span><span class="na">regularRate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">plan</span><span class="p">.</span><span class="na">regularServiceCharge</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// after refactor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">summer</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">charge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">summerCharge</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">else</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">charge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">regularCharge</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Introduce Parameter Object</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// before refactor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountInvoiced</span><span class="p">(</span><span class="n">startDate</span><span class="p">,</span><span class="w"> </span><span class="n">endDate</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountReceived</span><span class="p">(</span><span class="n">startDate</span><span class="p">,</span><span class="w"> </span><span class="n">endDate</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountOverdue</span><span class="p">(</span><span class="n">startDate</span><span class="p">,</span><span class="w"> </span><span class="n">endDate</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// after refactor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountInvoiced</span><span class="p">(</span><span class="n">aDateRange</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountReceived</span><span class="p">(</span><span class="n">aDateRange</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountOverdue</span><span class="p">(</span><span class="n">aDateRange</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="更易于测试的io" class="heading-element"><span>更易于测试的IO</span>
+  <a href="#%e6%9b%b4%e6%98%93%e4%ba%8e%e6%b5%8b%e8%af%95%e7%9a%84io" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ol>
+<li>使用内存数据库替代生产环境数据库进行测试。</li>
+<li>使用虚拟文件系统(in memory)模拟文件操作。这里需要考虑接口的设计不要使用文件名作为参数，而应该使用<code>Reader(golang)</code>或者<code>IOStream(Java)</code>这种抽象接口或者实现。</li>
+</ol>
+<h3 id="做io测试" class="heading-element"><span>做IO测试</span>
+  <a href="#%e5%81%9aio%e6%b5%8b%e8%af%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>那么就用IO做测试吧，现在的IO设备已经很快了。这里提到了使用<code>Postgres</code>的复制测试数据库的功能可以方便进行测试。</p>
+<h3 id="逻辑和服务io分离" class="heading-element"><span>逻辑和服务/IO分离</span>
+  <a href="#%e9%80%bb%e8%be%91%e5%92%8c%e6%9c%8d%e5%8a%a1io%e5%88%86%e7%a6%bb" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>将业务逻辑和服务/IO分离开，这里业务逻辑就可以进行单独的测试了。对于IO骨架可以使用<a href="https://en.wikipedia.org/wiki/Command_pattern"target="_blank" rel="external nofollow noopener noreferrer"><code>Command pattern</code></a>进行测试。</p>
+<h3 id="e2e集成测试" class="heading-element"><span>E2E集成测试</span>
+  <a href="#e2e%e9%9b%86%e6%88%90%e6%b5%8b%e8%af%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>基于UI的集成测试是有必要的，但是UI驱动测试比较脆弱，而且很不容易维护。所以可以考虑编写更多的后端E2E的集成测试。</p>
+<p>原文里面提供了比较详细的例子来辅助说明各种方式，可以作为参考。<br>
+<code>Mock</code>在日常的开发中还是比较经常使用的，比如<code>Flink</code>里面很多测试都单独编写了单独的<code>Mock Object</code>来方便进行测试，在日常的开发中我们可以进行参考。等之后积累的更多的案例可以再完善一下本文。</p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2024-07-20 21:26:32">Updated on 2024-07-20&nbsp;</span>
+        <span title="Updated on 2024-07-20 19:42:56">Updated on 2024-07-20&nbsp;</span>
       </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/a12006b/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
@@ -176,7 +307,7 @@
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/draft/" class="post-tag" title="Tags - Draft">Draft</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/test/" class="post-tag" title="Tags - Test">Test</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
@@ -188,18 +319,42 @@
     <div class="comment">Buy me a coffee</div>
     <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
     <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>Donate</label>
-    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="Alipay" data-title="Alipay" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span>Alipay</span>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="eason.qin Alipay" data-title="eason.qin Alipay" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span>Alipay</span>
           </div></div>
-  </div></article>
+  </div><div id="comments"><div id="giscus" class="comment">
+          <script
+            src="https://giscus.app/client.js"
+            data-repo="qinf/qinf.github.io"
+            data-repo-id=""
+            data-category="Announcements"
+            data-category-id=""
+            data-mapping="pathname"
+            data-strict="0"
+            
+            data-theme="preferred_color_scheme"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async
+            defer
+          ></script>
+        </div>
+        <noscript>
+          Please enable JavaScript to view the comments powered by <a href="https://giscus.app/" rel="external nofollow noopener noreferrer">giscus</a>.
+        </noscript></div></article>
 
-  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.130.0-DEV"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.129.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
               <a href="https://github.com/qinf"target="_blank" rel="external nofollow noopener noreferrer">eason.qin</a></span></div></div>
   </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
-        </div></div><div id="mask"></div><noscript>
+        </div><div class="fixed-button view-comments d-none" role="button" aria-label="View Comments"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">यह वेबसाइट जावास्क्रिप्ट सक्षम होने पर सबसे अच्छा काम करती है।</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":50},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":50},"comment":{"enable":true,"expired":false,"giscus":{"darkTheme":"dark","lightTheme":"light","origin":"https://giscus.app"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>
