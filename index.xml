@@ -4,9 +4,18 @@
     <link>https://qinf.github.io/</link>
     <description>Eason的blog</description>
     <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
-      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Sat, 20 Jul 2024 21:49:55 &#43;0800</lastBuildDate>
+      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Tue, 23 Jul 2024 21:11:13 &#43;0800</lastBuildDate>
       <atom:link href="https://qinf.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+  <title>我的线上服务行为又不符合预期了</title>
+  <link>https://qinf.github.io/posts/729576f/</link>
+  <pubDate>Tue, 23 Jul 2024 21:11:13 &#43;0800</pubDate>
+  <author>eason.qin</author>
+  <guid>https://qinf.github.io/posts/729576f/</guid>
+  <description><![CDATA[<p><img loading="lazy" src="/images/online-service-arthas/online-service-why.png" alt="我的服务行为又不符合预期了" srcset="/images/online-service-arthas/online-service-why.png?size=small, /images/online-service-arthas/online-service-why.png?size=medium 1.5x, /images/online-service-arthas/online-service-why.png?size=large 2x" data-title="我的服务行为又不符合预期了" style="--width: 1792px;--aspect-ratio: 1792 / 1024;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>
+你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。</p>]]></description>
+</item>
+<item>
   <title>Mocking 是一种反模式</title>
   <link>https://qinf.github.io/posts/a12006b/</link>
   <pubDate>Sat, 20 Jul 2024 19:42:56 &#43;0800</pubDate>

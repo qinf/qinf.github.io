@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>我的线上服务行为又不符合预期了 - Eason的blog</title><meta name="author" content="eason.qin">
+<meta name="author-link" content="https://github.com/qinf">
+<meta name="description" content="
+你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。" /><meta name="keywords" content='Arthas' />
+  <meta itemprop="name" content="我的线上服务行为又不符合预期了">
+  <meta itemprop="description" content=" 你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。">
+  <meta itemprop="datePublished" content="2024-07-23T21:11:13+08:00">
+  <meta itemprop="dateModified" content="2024-07-23T21:11:13+08:00">
+  <meta itemprop="wordCount" content="87">
+  <meta itemprop="keywords" content="Arthas"><meta property="og:url" content="https://qinf.github.io/posts/729576f/">
+  <meta property="og:site_name" content="Eason的blog">
+  <meta property="og:title" content="我的线上服务行为又不符合预期了">
+  <meta property="og:description" content=" 你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-23T21:11:13+08:00">
+    <meta property="article:modified_time" content="2024-07-23T21:11:13+08:00">
+    <meta property="article:tag" content="Troubleshooting">
+    <meta property="article:tag" content="Arthas">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="我的线上服务行为又不符合预期了">
+  <meta name="twitter:description" content=" 你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://qinf.github.io/posts/729576f/" /><link rel="prev" href="https://qinf.github.io/posts/a12006b/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "我的线上服务行为又不符合预期了",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/qinf.github.io\/posts\/729576f\/"
+    },"genre": "posts","keywords": "troubleshooting, Arthas","wordcount":  87 ,
+    "url": "https:\/\/qinf.github.io\/posts\/729576f\/","datePublished": "2024-07-23T21:11:13+08:00","dateModified": "2024-07-23T21:11:13+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "eason.qin"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Eason的blog"><img loading="lazy" src="/images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/archives/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-exclamation-circle fa-fw fa-sm" aria-hidden="true"></i> About</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Eason的blog"><img loading="lazy" src="/images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/archives/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-exclamation-circle fa-fw fa-sm" aria-hidden="true"></i> About</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>我的线上服务行为又不符合预期了</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/qinf" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    eason.qin</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/troubleshooting/" class="post-category" title="Category - Troubleshooting"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Troubleshooting</a></span></div><div class="post-meta-line"><span title="published on 2024-07-23 21:11:13"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-07-23">2024-07-23</time></span>&nbsp;<span title="87 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#服务描述">服务描述</a></li>
+    <li><a href="#问题排查">问题排查</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p><img loading="lazy" src="/images/online-service-arthas/online-service-why.png" alt="我的服务行为又不符合预期了" srcset="/images/online-service-arthas/online-service-why.png?size=small, /images/online-service-arthas/online-service-why.png?size=medium 1.5x, /images/online-service-arthas/online-service-why.png?size=large 2x" data-title="我的服务行为又不符合预期了" style="--width: 1792px;--aspect-ratio: 1792 / 1024;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>
+你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。</p>
+<h2 id="服务描述" class="heading-element"><span>服务描述</span>
+  <a href="#%e6%9c%8d%e5%8a%a1%e6%8f%8f%e8%bf%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><img loading="lazy" src="/images/online-service-arthas/online-service.png" alt="线上服务" srcset="/images/online-service-arthas/online-service.png?size=small, /images/online-service-arthas/online-service.png?size=medium 1.5x, /images/online-service-arthas/online-service.png?size=large 2x" data-title="线上服务" style="--width: 1786px;--aspect-ratio: 1786 / 744;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>
+这里的用户通过Rest API 访问<code>service-1</code>的<code>function1</code>，<code>function1</code>通过Rest API访问<code>service-2</code>的<code>function2</code>，<code>function2</code>计算出结果之后返回给调用方。这里<code>service-2``function2</code>就是我上线挺长时间的一个功能。简化java class和方法的定义如下，另外说明一下这里<code>function1</code>实际里面有很多方法调用，这里全部简化掉只是为了说明相关的排查方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// function1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nn">com.eason.service1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nf">Service1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">function1</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">params</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// function2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nn">com.eason.service2</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nf">Service2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">function2</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">params</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里遇到的问题就是用户之前可以拿到结果，现在没有结果了。</p>
+<h2 id="问题排查" class="heading-element"><span>问题排查</span>
+  <a href="#%e9%97%ae%e9%a2%98%e6%8e%92%e6%9f%a5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>首先直接调用<code>service-2``function2</code>的Rest API发现其功能是正常的，那么排除<code>function2</code>是不可用的。
+然后怀疑是<code>function1</code>调用<code>function2</code>的时候出现了问题。那么如何排查调用是真的有问题呢？如果有日志记录调用过程，那么排查会方便一些，但是不是所有的调用都会记录日志的，否则日志量可能太大了。
+接下来就寄出了本次排查问题的利器：<a href="https://github.com/alibaba/arthas"target="_blank" rel="external nofollow noopener noreferrer">Arthas</a>。这里排查的基本思路就是中<code>function1</code>和<code>function2</code>上分别监控调用的入参、返回值和预期的值进行对比。下面就整理一些具体的步骤。</p>
+<ol>
+<li>
+<p>当然首先要做的肯定是下载并解压<code>arthas-bin.zip</code>，可以去<code>Arthas</code>在<code>Github</code>[1]仓库进行下载。这里面包含多个jar和相关的脚本。具体使用可以参加其文档。</p>
+</li>
+<li>
+<p>我通常习惯使用<code>java -jar arthas-boot.jar</code>启动arthas server，这里需要：需要使用和服务相同的账户和<code>Java</code>版本。</p>
+</li>
+<li>
+<p>然后我们通过数字选择对应的服务，上面的命令会有类似<code>jps</code>的输出，每个<code>Java</code>服务都会列出来，选择我们的目标服务即可</p>
+</li>
+<li>
+<p>使用<code>watch</code>[2]命令来观察函数的入参、返回值</p>
+<ul>
+<li><code>watch com.eason.service1.Service1 function1 &quot;{params,target,returnObj}&quot; -x 4 -b -n 5</code>
+<ul>
+<li><code>&quot;{parama,returnObj}&quot;</code>为观察表达式</li>
+<li><code>-x</code>指定输出结果属性的便利深度，就是将输出结果以可读的方式展示</li>
+<li><code>-b</code>在函数调用前观察，当然也有<code>-e</code>在函数调用之后观察</li>
+<li><code>-n</code>这里是执行几次</li>
+</ul>
+</li>
+<li><code>watch com.eason.service1.Service2 function2 &quot;{params,target,returnObj}&quot; -x 4 -b -n 5</code></li>
+</ul>
+</li>
+<li>
+<p>通过4的结果发现，<code>function1</code>调用<code>function2</code>的参数传的不符合预期，又对<code>function1</code>内部的其他相关的方法做了<code>watch</code>，最终定位到了问题。`</p>
+</li>
+</ol>
+<p><code>Arthas</code>有非常多的功能，可以通过命令列表看到其支持的功能[3]，常用的有<code>watch</code>、<code>heapdump</code>、<code>profiler</code>、<code>trace</code>等。熟悉这些命令的基本使用非常有利于线上问题的排查。
+当然线上服务的问题多种多样，<code>Arthas</code>只是排查问题的一个工具。如果服务是分布式的且有很多实例，那么文中这种排查方式处理起来就有些麻烦了，在多个实例上执行这套流程是比较耗时的，可能需要更都工具化的东西来支持。</p>
+<h2 id="参考" class="heading-element"><span>参考</span>
+  <a href="#%e5%8f%82%e8%80%83" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>[1] <a href="https://github.com/alibaba/arthas/releases"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/alibaba/arthas/releases</a><br>
+[2] <a href="https://arthas.aliyun.com/doc/watch.html"target="_blank" rel="external nofollow noopener noreferrer">https://arthas.aliyun.com/doc/watch.html</a><br>
+[3] <a href="https://arthas.aliyun.com/doc/commands.html"target="_blank" rel="external nofollow noopener noreferrer">https://arthas.aliyun.com/doc/commands.html</a></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2024-07-23 21:11:13">Updated on 2024-07-23&nbsp;</span>
+      </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/729576f/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+        <div class="post-info-share">
+          <span></span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/troubleshooting/" class="post-tag" title="Tags - Troubleshooting">Troubleshooting</a><a href="/tags/arthas/" class="post-tag" title="Tags - Arthas">Arthas</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/a12006b/" class="post-nav-item" rel="prev" title="Mocking 是一种反模式"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Mocking 是一种反模式</a></div>
+</div>
+<div class="post-reward">
+    <div class="comment">Buy me a coffee</div>
+    <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
+    <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>Donate</label>
+    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="eason.qin Alipay" data-title="eason.qin Alipay" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span>Alipay</span>
+          </div></div>
+  </div><div id="comments"><div id="giscus" class="comment">
+          <script
+            src="https://giscus.app/client.js"
+            data-repo="qinf/qinf.github.io"
+            data-repo-id=""
+            data-category="Announcements"
+            data-category-id=""
+            data-mapping="pathname"
+            data-strict="0"
+            
+            data-theme="preferred_color_scheme"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async
+            defer
+          ></script>
+        </div>
+        <noscript>
+          Please enable JavaScript to view the comments powered by <a href="https://giscus.app/" rel="external nofollow noopener noreferrer">giscus</a>.
+        </noscript></div></article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.129.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.8"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://github.com/qinf"target="_blank" rel="external nofollow noopener noreferrer">eason.qin</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div><div class="fixed-button view-comments d-none" role="button" aria-label="View Comments"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">यह वेबसाइट जावास्क्रिप्ट सक्षम होने पर सबसे अच्छा काम करती है।</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":50},"comment":{"enable":true,"expired":false,"giscus":{"darkTheme":"dark","lightTheme":"light","origin":"https://giscus.app"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.8"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

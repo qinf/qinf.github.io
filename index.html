@@ -12,8 +12,8 @@
 <meta name="author-link" content="https://github.com/qinf">
 <meta name="description" content="" />
   <meta itemprop="name" content="Eason的blog">
-  <meta itemprop="datePublished" content="2024-07-20T21:49:55+08:00">
-  <meta itemprop="dateModified" content="2024-07-20T23:32:52+08:00"><meta property="og:url" content="https://qinf.github.io/">
+  <meta itemprop="datePublished" content="2024-07-23T21:11:13+08:00">
+  <meta itemprop="dateModified" content="2024-07-23T21:11:13+08:00"><meta property="og:url" content="https://qinf.github.io/">
   <meta property="og:site_name" content="Eason的blog">
   <meta property="og:title" content="Eason的blog">
   <meta property="og:locale" content="en">
@@ -146,7 +146,13 @@
   </div>
   <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-  </div><main class="container"><div class="page home posts"><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><a href="/posts/a12006b/">Mocking 是一种反模式</a>
+  </div><main class="container"><div class="page home posts"><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><a href="/posts/729576f/">我的线上服务行为又不符合预期了</a>
+  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/qinf" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    eason.qin</a></span>&nbsp;<span class="post-publish" title='2024-07-23 21:11:13'>published on <time datetime="2024-07-23">2024-07-23</time></span><span class="post-included-in">&nbsp;included in <a href="/categories/troubleshooting/" class="post-category" title="Category - Troubleshooting"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Troubleshooting</a></span></div><div class="content"><p><img loading="lazy" src="/images/online-service-arthas/online-service-why.png" alt="我的服务行为又不符合预期了" srcset="/images/online-service-arthas/online-service-why.png?size=small, /images/online-service-arthas/online-service-why.png?size=medium 1.5x, /images/online-service-arthas/online-service-why.png?size=large 2x" data-title="我的服务行为又不符合预期了" style="--width: 1792px;--aspect-ratio: 1792 / 1024;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>
+你是不是遇到过这样的问题：自己的一个服务一直稳定运行的挺长时间了，突然它的行为就不符合预期了。然后你的同事来找你看看为啥行为变了呢？我最近也遇到了一个类似的问题，这里就简单记录一下自己排查这个问题的过程。</p></div><div class="post-footer">
+    <a href="/posts/729576f/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/troubleshooting/' class="post-tag">Troubleshooting</a><a href='/tags/arthas/' class="post-tag">Arthas</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><a href="/posts/a12006b/">Mocking 是一种反模式</a>
   </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/qinf" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
     eason.qin</a></span>&nbsp;<span class="post-publish" title='2024-07-20 19:42:56'>published on <time datetime="2024-07-20">2024-07-20</time></span><span class="post-included-in">&nbsp;included in <a href="/categories/test/" class="post-category" title="Category - Test"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Test</a></span></div><div class="content"><p>这周看到来一篇文章<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。</p></div><div class="post-footer">
     <a href="/posts/a12006b/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/test/' class="post-tag">Test</a></div></div>
