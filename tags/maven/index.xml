@@ -10,9 +10,9 @@
   <pubDate>Sat, 23 Jul 2022 18:34:33 &#43;0000</pubDate>
   <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/java%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86-maven%E5%8D%95%E6%B5%8B/</guid>
-  <description><![CDATA[Java 多版本管理 sdkman可安装多版本JAVA或者其他软件。sdkman.io
-jEVN是一个命令行工具让你免于设置JAVA_HOME配置。可以参考这篇文章Configuring jenv the right way
-1 2 3 4 5 6 7 8 9 10 11 12 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面 echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc # 添加jdk，这里以Mac OSX为例 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home # 启用全局JAVA version jenv global ${JAVA_VERSION} # 设置SHELL指定的JAVA version jenv shell ${JAVA_VERSION} # 如果使用maven则还需要如下的配置 jenv enable-plugin maven jenv enable-plugin export # 如果不开启的话 $JAVA_HOME 可能为空 Java 单测时出现 java.net.MalformedURLException: unknown protocol: socks5 异常 在跑Flink Kubernetes模块的单测时遇到此异常，完整异常栈]]></description>
+  <description><![CDATA[<h2 id="java-多版本管理" class="heading-element"><span>Java 多版本管理</span>
+  <a href="#java-%e5%a4%9a%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></pa]]></description>
 </item>
 </channel>
 </rss>

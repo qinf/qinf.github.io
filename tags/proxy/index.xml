@@ -10,7 +10,8 @@
   <pubDate>Fri, 06 May 2022 18:31:53 &#43;0000</pubDate>
   <author>eason.qin</author>
   <guid>https://qinf.github.io/posts/ping%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86/</guid>
-  <description><![CDATA[ping使用的是ICMP协议，不支持代理。 可以执行curl -vv https://www.google.com看看有没有走代理。]]></description>
+  <description><![CDATA[<p><code>ping</code>使用的是<code>ICMP</code>协议，不支持代理。
+可以执行<code>curl -vv https://www.google.com</code>看看有没有走代理。</p>]]></description>
 </item>
 </channel>
 </rss>
