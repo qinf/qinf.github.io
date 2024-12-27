@@ -1,16 +1,22 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Test - Tag - Eason的blog</title>
     <link>https://qinf.github.io/tags/test/</link>
-    <description>Test - Tag | Eason的blog</description>
-    <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
-      <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster><lastBuildDate>Sat, 20 Jul 2024 19:42:56 &#43;0800</lastBuildDate><atom:link href="https://qinf.github.io/tags/test/" rel="self" type="application/rss+xml" /><item>
-  <title>Mocking 是一种反模式</title>
-  <link>https://qinf.github.io/posts/a12006b/</link>
-  <pubDate>Sat, 20 Jul 2024 19:42:56 &#43;0800</pubDate>
-  <author>eason.qin</author>
-  <guid>https://qinf.github.io/posts/a12006b/</guid>
-  <description><![CDATA[<p>这周看到来一篇文章<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。</p>]]></description>
-</item>
-</channel>
+    <description>Eason的blog</description>
+    <generator>Hugo 0.140.1 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>qinjunzhong@gmail.com (eason.qin)</managingEditor>
+    <webMaster>qinjunzhong@gmail.com (eason.qin)</webMaster>
+    <lastBuildDate>Sat, 20 Jul 2024 19:42:56 +0800</lastBuildDate>
+    <atom:link href="https://qinf.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mocking 是一种反模式</title>
+      <link>https://qinf.github.io/posts/a12006b/</link>
+      <pubDate>Sat, 20 Jul 2024 19:42:56 +0800</pubDate><author>qinjunzhong@gmail.com (eason.qin)</author>
+      <guid>https://qinf.github.io/posts/a12006b/</guid>
+      <category domain="https://qinf.github.io/categories/test/">Test</category>
+      <description>&lt;p&gt;这周看到来一篇文章&lt;a href=&#34;https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/&#34;target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;Mocking is an Anti-Pattern&lt;/a&gt;，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>
