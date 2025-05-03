@@ -53,7 +53,7 @@
   <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="Eason的blog"><img loading="lazy" src="/images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Eason的blog"><img class="logo" src='/images/logo.png' alt="Eason的blog" height="32" width="32"><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
@@ -79,7 +79,7 @@
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="Eason的blog"><img loading="lazy" src="/images/logo.png" alt="Eason的blog" data-title="Eason的blog" width="26" height="26" class="logo" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Eason的blog"><img class="logo" src='/images/logo.png' alt="Eason的blog" height="26" width="26"><span class="header-title-text">Eason的blog</span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -139,8 +139,8 @@
   </ul>
 </nav></div>
       </div><div class="content" id="content"><p>这周看到来一篇文章<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>，这里的观点引起了我的共鸣，工作中确实体会到过Mock带来的坏处或者说是不好的实践。</p>
-<p><img loading="lazy" src="/images/mock-is-an-anti-pattern/mock.png" alt="Mock是一种反模式" srcset="/images/mock-is-an-anti-pattern/mock.png?size=small, /images/mock-is-an-anti-pattern/mock.png?size=medium 1.5x, /images/mock-is-an-anti-pattern/mock.png?size=large 2x" data-title="Mock是一种反模式" style="--width: 1036px;--aspect-ratio: 1036 / 910;background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/></p>
-<h2 id="什么是mock什么是反模式" class="heading-element"><span>什么是Mock，什么是反模式</span>
+<p><img loading="lazy" src='/images/mock-is-an-anti-pattern/mock.png' alt="Mock是一种反模式" height="910" width="1036"></p>
+<h2 class="heading-element" id="什么是mock什么是反模式"><span>什么是Mock，什么是反模式</span>
   <a href="#%e4%bb%80%e4%b9%88%e6%98%afmock%e4%bb%80%e4%b9%88%e6%98%af%e5%8f%8d%e6%a8%a1%e5%bc%8f" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -149,19 +149,19 @@
 <blockquote>
 <p>在软件工程中，<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E9%9D%A2%E6%A8%A1%E5%BC%8F"target="_blank" rel="external nofollow noopener noreferrer">反面模式</a>（anti-pattern或antipattern）指的是在实践中经常出现但又低效或是有待优化的设计模式[1][2]，是用来解决问题的带有共同性的不良方法。它们已经经过研究并分类，以防止日后重蹈覆辙，并能在研发尚未投产的系统时辨认出来。</p></blockquote>
 <p>在代码测试中，有些有副作用的逻辑无法直接调用的时候<code>Mock</code>就上场了。<code>Mock</code>模拟了代码里面的参数传递、函数调用以及我们预期结果的验证。一切好像极其的合理，代码的执行也跟我们假想的一模一样。</p>
-<h2 id="mock带来哪些坏处" class="heading-element"><span>Mock带来哪些坏处</span>
+<h2 class="heading-element" id="mock带来哪些坏处"><span>Mock带来哪些坏处</span>
   <a href="#mock%e5%b8%a6%e6%9d%a5%e5%93%aa%e4%ba%9b%e5%9d%8f%e5%a4%84" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h2><p>但是就如<a href="https://www.amazingcto.com/mocking-is-an-antipattern-how-to-test-without-mocking/"target="_blank" rel="external nofollow noopener noreferrer">Mocking is an Anti-Pattern</a>这篇文章所说的“Mocking frameworks are a path to insanity!”，在实践中我们总是代码的<code>happy path</code>进行建模，虽然这是必须的但是无助于我们发现代码中的错误。 <br>
 过多的<code>Mock</code>导致了很多浪费体力、时间的无效工作。这让我想起了多年前我还在字节工作的时候的一次实践：为了提高代码测试覆盖率编写了大量的<code>Mock</code>，因为很多涉及到<code>IO</code>代码无法直接调用。<br>
 <code>Mock</code> <code>IO</code>操作的可能会让忽略很多case，包括：边缘情况、故障等等。</p>
-<h2 id="除了mock我们可以怎么做" class="heading-element"><span>除了Mock我们可以怎么做</span>
+<h2 class="heading-element" id="除了mock我们可以怎么做"><span>除了Mock我们可以怎么做</span>
   <a href="#%e9%99%a4%e4%ba%86mock%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e6%80%8e%e4%b9%88%e5%81%9a" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h2><p>那么除了<code>Mock</code>外还有哪些手段可以改进这种情况呢？文中提到了好几种方式。</p>
-<h3 id="做更多的单元测试" class="heading-element"><span>做更多的单元测试</span>
+<h3 class="heading-element" id="做更多的单元测试"><span>做更多的单元测试</span>
   <a href="#%e5%81%9a%e6%9b%b4%e5%a4%9a%e7%9a%84%e5%8d%95%e5%85%83%e6%b5%8b%e8%af%95" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -220,7 +220,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountReceived</span><span class="p">(</span><span class="n">aDateRange</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="nf">amountOverdue</span><span class="p">(</span><span class="n">aDateRange</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span></span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="更易于测试的io" class="heading-element"><span>更易于测试的IO</span>
+</div><h3 class="heading-element" id="更易于测试的io"><span>更易于测试的IO</span>
   <a href="#%e6%9b%b4%e6%98%93%e4%ba%8e%e6%b5%8b%e8%af%95%e7%9a%84io" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -228,17 +228,17 @@
 <li>使用内存数据库替代生产环境数据库进行测试。</li>
 <li>使用虚拟文件系统(in memory)模拟文件操作。这里需要考虑接口的设计不要使用文件名作为参数，而应该使用<code>Reader(golang)</code>或者<code>IOStream(Java)</code>这种抽象接口或者实现。</li>
 </ol>
-<h3 id="做io测试" class="heading-element"><span>做IO测试</span>
+<h3 class="heading-element" id="做io测试"><span>做IO测试</span>
   <a href="#%e5%81%9aio%e6%b5%8b%e8%af%95" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h3><p>那么就用IO做测试吧，现在的IO设备已经很快了。这里提到了使用<code>Postgres</code>的复制测试数据库的功能可以方便进行测试。</p>
-<h3 id="逻辑和服务io分离" class="heading-element"><span>逻辑和服务/IO分离</span>
+<h3 class="heading-element" id="逻辑和服务io分离"><span>逻辑和服务/IO分离</span>
   <a href="#%e9%80%bb%e8%be%91%e5%92%8c%e6%9c%8d%e5%8a%a1io%e5%88%86%e7%a6%bb" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h3><p>将业务逻辑和服务/IO分离开，这里业务逻辑就可以进行单独的测试了。对于IO骨架可以使用<a href="https://en.wikipedia.org/wiki/Command_pattern"target="_blank" rel="external nofollow noopener noreferrer"><code>Command pattern</code></a>进行测试。</p>
-<h3 id="e2e集成测试" class="heading-element"><span>E2E集成测试</span>
+<h3 class="heading-element" id="e2e集成测试"><span>E2E集成测试</span>
   <a href="#e2e%e9%9b%86%e6%88%90%e6%b5%8b%e8%af%95" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -267,7 +267,7 @@
     <div class="comment">Buy me a coffee</div>
     <input type="checkbox" class="reward-input" name="reward" id="fi-reward" hidden />
     <label class="reward-button" for="fi-reward"><i class="fa-solid fa-qrcode fa-fw" aria-hidden="true"></i>Donate</label>
-    <div class="reward-ways" data-mode="static"><div><img loading="lazy" src="/images/alipay.png" alt="eason.qin Alipay" data-title="eason.qin Alipay" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/><span>Alipay</span>
+    <div class="reward-ways" data-mode="static"><div><img src='/images/alipay.png' alt="eason.qin Alipay" height="308" width="268"><span>Alipay</span>
           </div></div>
   </div><div id="comments"><div id="giscus" class="comment">
           <script
@@ -296,7 +296,7 @@
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.143.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.20"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
               <a href="https://github.com/qinf"target="_blank" rel="external nofollow noopener noreferrer">eason.qin</a></span></div></div>
@@ -304,5 +304,5 @@
         </div><div class="fixed-button view-comments d-none" role="button" aria-label="View Comments"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">This website works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":true,"expired":false,"giscus":{"darkTheme":"dark","lightTheme":"light","origin":"https://giscus.app"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.16"};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":true,"expired":false,"giscus":{"darkTheme":"dark","lightTheme":"light","origin":"https://giscus.app"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

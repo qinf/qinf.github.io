@@ -3,11 +3,11 @@
 ## Java 多版本管理
 `sdkman`可安装多版本`JAVA`或者其他软件。[sdkman.io](https://sdkman.io/)  
 `jEVN`是一个命令行工具让你免于设置`JAVA_HOME`配置。可以参考这篇文章[Configuring jenv the right way](https://developer.bring.com/blog/configuring-jenv-the-right-way/)
-&lt;!-- more --&gt;
+<!-- more -->
 ```bash
 # 添加配置到.zshrc，如果使用bash的话需要添加到.bash_profile里面
-echo &#39;export PATH=&#34;$HOME/.jenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc
-echo &#39;eval &#34;$(jenv init -)&#34;&#39; &gt;&gt; ~/.zshrc
+echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(jenv init -)"' >> ~/.zshrc
 # 添加jdk，这里以Mac OSX为例
 jenv add /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
 # 启用全局JAVA version
@@ -50,9 +50,9 @@ io.fabric8.kubernetes.client.KubernetesClientException: Invalid proxy server con
 	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
 	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
 Caused by: java.net.MalformedURLException: unknown protocol: socks5
-	at java.net.URL.&lt;init&gt;(URL.java:617)
-	at java.net.URL.&lt;init&gt;(URL.java:507)
-	at java.net.URL.&lt;init&gt;(URL.java:456)
+	at java.net.URL.<init>(URL.java:617)
+	at java.net.URL.<init>(URL.java:507)
+	at java.net.URL.<init>(URL.java:456)
 	at io.fabric8.kubernetes.client.utils.HttpClientUtils.getProxyUrl(HttpClientUtils.java:221)
 	at io.fabric8.kubernetes.client.utils.HttpClientUtils.createHttpClient(HttpClientUtils.java:144)
 	... 24 more

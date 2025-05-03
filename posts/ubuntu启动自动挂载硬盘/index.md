@@ -16,7 +16,7 @@ sudo vi /etc/fstab
 # 第二个数2，0表示交换分区，1表示启动分区，2表示普通分区 
 UUID=${UUID} /media/qinf/D ntfs defaults  0  2
 ```
-&lt;!-- more --&gt;
+<!-- more -->
 
 ## Docker container 启动重启
 ```bash
